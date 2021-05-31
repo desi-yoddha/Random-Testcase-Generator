@@ -1,3 +1,6 @@
+.bg-dark2{
+    background-color: #070707f5;
+}
 .nav-margin {
     margin: 0 15px;
 }
@@ -6,7 +9,6 @@
 }
 .navbar .navbar-nav .nav-link:hover {
     background-color: rgba(151, 151, 151, 0.109);
-
 }
 .mid-fl {
     margin: auto;
@@ -42,15 +44,16 @@
     padding-right: 5%;
 }
 
+
 @media only screen and (max-width: 800px) {
-  .pd-lr {
-    padding-left: 3%;
-    padding-right: 3%;
-}
-.pd-lr-2 {
-    padding-left: 1%;
-    padding-right: 1%;
-}
+    .pd-lr {
+        padding-left: 3%;
+        padding-right: 3%;
+    }
+    .pd-lr-2 {
+        padding-left: 1%;
+        padding-right: 1%;
+    }
 }
 
 footer {
@@ -69,7 +72,7 @@ table {
 }
 .container-c {
     min-height: 60vh;
-    min-height: calc(var(--vh, 1vh) * 50);
+    min-height: calc(var(--vh, 1vh) * 60);
 }
 .hd {
     font-family: "Montserrat", sans-serif;
