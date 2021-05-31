@@ -1,0 +1,11 @@
+---
+application:
+  name: "random-testcase-generator"
+  project: "Random-TC"
+  organization: "QoveryCommunity"
+routers:
+- name: "main-random-testcase-generator"
+  routes:
+  - application_name: "random-testcase-generator"
+    paths:
+    - "/*"
