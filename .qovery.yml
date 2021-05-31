@@ -1,14 +1,14 @@
 ---
 application:
-  name: "random-testcase-generator"
-  project: "Random-TC"
-  organization: "QoveryCommunity"
+    name: "random-testcase-generator"
+    project: "Random-TC"
+    organization: "QoveryCommunity"
 routers:
-- name: "main-random-testcase-generator"
-  custom_domains:
-    - branch: "main"
-      domain: "randomtc.xyz"
-  routes:
-  - application_name: "random-testcase-generator"
-    paths:
-    - "/*"
+    - name: "main-random-testcase-generator"
+      custom_domains:
+          - branch: "main"
+            domain: "www.randomtc.xyz"
+      routes:
+          - application_name: "random-testcase-generator"
+            paths:
+                - "/*"
