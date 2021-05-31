@@ -5,6 +5,9 @@ application:
   organization: "QoveryCommunity"
 routers:
 - name: "main-random-testcase-generator"
+  custom_domains:
+    - branch: "main"
+      domain: "randomtc.xyz"
   routes:
   - application_name: "random-testcase-generator"
     paths:
