@@ -1,6 +1,45 @@
-<%- include('partials/header'); %>
-<body style="background-color: #bdcfb5; text-align: center">
-    <%- include('partials/navbar'); %>
-    <h1 class="container-c">THANKYOU FOR YOUR SUGGESTION! ^-^</h1>
-</body>
+<%- include('partials/header'); %> <%- include('partials/navbar'); %>
+
+<div class="container container-c p-5">
+    <form class="align-items-center" method="post" action="/suggestion">
+        <div class="input-group mb-3">
+            <span
+                class="input-group-text form-span-width bg-dark"
+                style="color: whitesmoke"
+                id="inputGroup-sizing-default"
+                >Email</span
+            >
+            <input
+                type="email"
+                id="email"
+                name="email"
+                class="form-control"
+                aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-default"
+                placeholder="Email ID (Not Mandatory)"
+            />
+        </div>
+        <div class="input-group mb-3">
+            <span
+                class="input-group-text form-span-width bg-dark"
+                style="color: whitesmoke"
+                id="inputGroup-sizing-default"
+                >Message</span
+            >
+            <input
+                id="suggestion"
+                name="suggestion"
+                class="form-control"
+                aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-default"
+                placeholder="Message"
+                required
+            />
+        </div>
+        <div class="text-center mb-5">
+            <button type="submit" class="btn btn-dark">Send!</button>
+        </div>
+    </form>
+</div>
+
 <%- include('partials/footer'); %>

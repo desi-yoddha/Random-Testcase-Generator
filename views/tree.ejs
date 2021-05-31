@@ -1,273 +1,259 @@
-<%- include('partials/header'); %>
-<body style="background-color: #bdcfb5">
-    <nav class="navbar navbar-dark bg-dark">
-        <div class="container-fluid pd-lr-2">
-            <a class="navbar-brand" href="/">Random TestCase Generator</a>
-            <div class="navbar-nav d-flex flex-row-reverse">
-                <a class="nav-link mx-5 active" href="/tree">Tree</a>
-                <a class="nav-link mx-5" href="/string">String</a>
-                <a class="nav-link mx-5" href="/matrix">Matrix</a>
-                <a class="nav-link mx-5" href="/array">Array</a>
+<%- include('partials/header'); %> <%- include('partials/navbar'); %>
+
+<div class="container pd-lr">
+    <h1 class="display-1" style="margin-bottom: 50px">Tree</h1>
+    <div class="form-wrap">
+        <form class="align-items-center" method="post" action="/tree">
+            <div class="input-group mb-3">
+                <span
+                    class="input-group-text form-span-width bg-dark"
+                    style="color: whitesmoke"
+                    id="inputGroup-sizing-default"
+                    >Test Cases</span
+                >
+                <input
+                    type="number"
+                    id="tc"
+                    name="testCase"
+                    class="form-control"
+                    aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-default"
+                    placeholder="Number of Test Cases"
+                    required
+                    value="<%=save.tc%>"
+                />
             </div>
-        </div>
-    </nav>
-
-    <div class="container pd-lr">
-        <h1 class="display-1" style="margin-bottom: 50px">Tree</h1>
-        <div class="form-wrap">
-            <form class="align-items-center" method="post" action="/tree">
-                <div class="input-group mb-3">
-                    <span
-                        class="input-group-text form-span-width bg-dark"
-                        style="color: whitesmoke"
-                        id="inputGroup-sizing-default"
-                        >Test Cases</span
-                    >
-                    <input
-                        type="number"
-                        id="tc"
-                        name="testCase"
-                        class="form-control"
-                        aria-label="Sizing example input"
-                        aria-describedby="inputGroup-sizing-default"
-                        placeholder="Number of Test Cases"
-                        required
-                        value="<%=save.tc%>"
-                    />
-                </div>
-                <div class="form-check mb-3">
-                    <input
-                        class="form-check-input"
-                        type="checkbox"
-                        value="1"
-                        id="printTC"
-                        name="printTC"
-                    />
-                    <label class="form-check-label" for="printTC">
-                        <span class="checkbox-text-color">Print TestCase</span>
-                    </label>
-                </div>
-
-                <div class="input-group mb-3">
-                    <span
-                        class="input-group-text form-span-width bg-dark"
-                        style="color: whitesmoke"
-                        id="inputGroup-sizing-default"
-                        >Nodes</span
-                    >
-                    <input
-                        type="number"
-                        id="n"
-                        name="size"
-                        class="form-control"
-                        aria-label="Sizing example input"
-                        aria-describedby="inputGroup-sizing-default"
-                        placeholder="Number of Nodes"
-                        value="<%=save.nmax%>"
-                        required
-                    />
-                </div>
-                <div class="form-check mb-0">
-                    <input
-                        class="form-check-input"
-                        type="checkbox"
-                        value="1"
-                        id="printSize"
-                        name="printSize"
-                    />
-                    <label class="form-check-label" for="printSize">
-                        <span class="checkbox-text-color">Print Size</span>
-                    </label>
-                </div>
-                <div class="form-check mb-3">
-                    <input
-                        class="form-check-input"
-                        type="checkbox"
-                        value="1"
-                        id="randomSize"
-                        name="randomSize"
-                    />
-                    <label class="form-check-label" for="randomSize">
-                        <span class="checkbox-text-color">Randomize Size</span>
-                    </label>
-                </div>
-
-                <div class="form-check mb-3">
-                    <input
-                        class="form-check-input"
-                        type="checkbox"
-                        value="1"
-                        id="randomRoot"
-                        name="randomRoot"
-                        onClick="showRootInput()"
-                    />
-                    <label class="form-check-label" for="randomRoot">
-                        <span class="checkbox-text-color">Random Root</span>
-                    </label>
-                </div>
-                <div class="input-group mb-3 hide" id="rootInput">
-                    <span
-                        class="input-group-text form-span-width bg-dark"
-                        style="color: whitesmoke"
-                        id="inputGroup-sizing-default"
-                        >Root</span
-                    >
-                    <input
-                        type="number"
-                        id="root"
-                        name="root"
-                        class="form-control"
-                        aria-label="Sizing example input"
-                        aria-describedby="inputGroup-sizing-default"
-                        placeholder="Root of the Tree"
-                        value="<%= save.root %>"
-                    />
-                </div>
-
-                <div class="form-check mb-3">
-                    <input
-                        class="form-check-input"
-                        type="checkbox"
-                        value="1"
-                        id="isWeight"
-                        name="isWeight"
-                        onClick="showWeightInput()"
-                    />
-                    <label class="form-check-label" for="isWeight">
-                        <span class="checkbox-text-color">Weighted Nodes</span>
-                    </label>
-                </div>
-
-                <div class="input-group mb-3 hide" id="weightInput">
-                    <span
-                        class="input-group-text form-span-width bg-dark"
-                        style="color: whitesmoke"
-                        id="inputGroup-sizing-default"
-                        >Weight</span
-                    >
-                    <input
-                        type="number"
-                        id="minWeight"
-                        name="weightMin"
-                        class="form-control"
-                        aria-label="Sizing example input"
-                        aria-describedby="inputGroup-sizing-default"
-                        placeholder="Minimum Weight"
-                        value="<%= save.weightMin %>"
-                    />
-                    <input
-                        type="number"
-                        id="maxWeight"
-                        name="weightMax"
-                        class="form-control"
-                        aria-label="Sizing example input"
-                        aria-describedby="inputGroup-sizing-default"
-                        placeholder="Maximum Weight"
-                        value="<%= save.weightMax %>"
-                    />
-                </div>
-
-                <div class="text-center mb-5">
-                    <button
-                        type="submit"
-                        onclick="limitCheck('tc','n')"
-                        class="btn btn-dark"
-                    >
-                        Generate!
-                    </button>
-                </div>
-            </form>
-
-            <div>
-                <p contenteditable="true" class="output-p" id="pout">
-                    <% for(const sub of generatedTc) { %> <% let str="" %> <%
-                    for(const el of sub) { %> <% str=str+el+" "%> <% } %>
-                    <%=str%>
-                    <br />
-                    <% } %>
-                </p>
+            <div class="form-check mb-3">
+                <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value="1"
+                    id="printTC"
+                    name="printTC"
+                />
+                <label class="form-check-label" for="printTC">
+                    <span class="checkbox-text-color">Print TestCase</span>
+                </label>
             </div>
+
+            <div class="input-group mb-3">
+                <span
+                    class="input-group-text form-span-width bg-dark"
+                    style="color: whitesmoke"
+                    id="inputGroup-sizing-default"
+                    >Nodes</span
+                >
+                <input
+                    type="number"
+                    id="n"
+                    name="size"
+                    class="form-control"
+                    aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-default"
+                    placeholder="Number of Nodes"
+                    value="<%=save.nmax%>"
+                    required
+                />
+            </div>
+            <div class="form-check mb-0">
+                <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value="1"
+                    id="printSize"
+                    name="printSize"
+                />
+                <label class="form-check-label" for="printSize">
+                    <span class="checkbox-text-color">Print Size</span>
+                </label>
+            </div>
+            <div class="form-check mb-3">
+                <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value="1"
+                    id="randomSize"
+                    name="randomSize"
+                />
+                <label class="form-check-label" for="randomSize">
+                    <span class="checkbox-text-color">Randomize Size</span>
+                </label>
+            </div>
+
+            <div class="form-check mb-3">
+                <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value="1"
+                    id="randomRoot"
+                    name="randomRoot"
+                    onClick="showRootInput()"
+                />
+                <label class="form-check-label" for="randomRoot">
+                    <span class="checkbox-text-color">Random Root</span>
+                </label>
+            </div>
+            <div class="input-group mb-3 hide" id="rootInput">
+                <span
+                    class="input-group-text form-span-width bg-dark"
+                    style="color: whitesmoke"
+                    id="inputGroup-sizing-default"
+                    >Root</span
+                >
+                <input
+                    type="number"
+                    id="root"
+                    name="root"
+                    class="form-control"
+                    aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-default"
+                    placeholder="Root of the Tree"
+                    value="<%= save.root %>"
+                />
+            </div>
+
+            <div class="form-check mb-3">
+                <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value="1"
+                    id="isWeight"
+                    name="isWeight"
+                    onClick="showWeightInput()"
+                />
+                <label class="form-check-label" for="isWeight">
+                    <span class="checkbox-text-color">Weighted Nodes</span>
+                </label>
+            </div>
+
+            <div class="input-group mb-3 hide" id="weightInput">
+                <span
+                    class="input-group-text form-span-width bg-dark"
+                    style="color: whitesmoke"
+                    id="inputGroup-sizing-default"
+                    >Weight</span
+                >
+                <input
+                    type="number"
+                    id="minWeight"
+                    name="weightMin"
+                    class="form-control"
+                    aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-default"
+                    placeholder="Minimum Weight"
+                    value="<%= save.weightMin %>"
+                />
+                <input
+                    type="number"
+                    id="maxWeight"
+                    name="weightMax"
+                    class="form-control"
+                    aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-default"
+                    placeholder="Maximum Weight"
+                    value="<%= save.weightMax %>"
+                />
+            </div>
+
+            <div class="text-center mb-5">
+                <button
+                    type="submit"
+                    onclick="limitCheck('tc','n')"
+                    class="btn btn-dark"
+                >
+                    Generate!
+                </button>
+            </div>
+        </form>
+
+        <div>
+            <p contenteditable="true" class="output-p" id="pout">
+                <% for(const sub of generatedTc) { %> <% let str="" %> <%
+                for(const el of sub) { %> <% str=str+el+" "%> <% } %> <%=str%>
+                <br />
+                <% } %>
+            </p>
         </div>
     </div>
-    <script>
-        window.onload = function () {
-            init_val();
-        };
+</div>
+<script>
+    window.onload = function () {
+        init_val();
+    };
 
-        function limitCheck(e1, e2) {
-            var a = document.getElementById(e1).value;
-            var b = document.getElementById(e2).value;
-            if (a * b > 100000) {
-                window.alert(
-                    "(Number of Testcase) x (Nodes in Tree) must be less than or equall to 100000! "
-                );
-            }
+    function limitCheck(e1, e2) {
+        var a = document.getElementById(e1).value;
+        var b = document.getElementById(e2).value;
+        if (a * b > 100000) {
+            window.alert(
+                "(Number of Testcase) x (Nodes in Tree) must be less than or equall to 100000! "
+            );
         }
-        function showWeightInput() {
-            if (document.getElementById("isWeight").value) {
-                //alert(document.getElementById("isWeight").check == true);
-                document.getElementById("weightInput").classList.toggle("hide");
-            } else {
-                document.getElementById("wieghtInput").classList.toggle("hide");
-            }
+    }
+    function showWeightInput() {
+        if (document.getElementById("isWeight").value) {
+            //alert(document.getElementById("isWeight").check == true);
+            document.getElementById("weightInput").classList.toggle("hide");
+        } else {
+            document.getElementById("wieghtInput").classList.toggle("hide");
         }
-        function showRootInput() {
-            if (document.getElementById("randomRoot").value) {
-                //alert(document.getElementById("isWeight").check == true);
-                document.getElementById("rootInput").classList.toggle("hide");
-            } else {
-                document.getElementById("rootInput").classList.toggle("hide");
-            }
+    }
+    function showRootInput() {
+        if (document.getElementById("randomRoot").value) {
+            //alert(document.getElementById("isWeight").check == true);
+            document.getElementById("rootInput").classList.toggle("hide");
+        } else {
+            document.getElementById("rootInput").classList.toggle("hide");
         }
+    }
 
-        function init_val() {
-            ptc();
-            ps();
-            rm();
-            wt();
-            if (document.getElementById("randomRoot").check == true) {
-            } else {
-                document.getElementById("rootInput").classList.toggle("hide");
-            }
-            rt();
+    function init_val() {
+        ptc();
+        ps();
+        rm();
+        wt();
+        if (document.getElementById("randomRoot").check == true) {
+        } else {
+            document.getElementById("rootInput").classList.toggle("hide");
         }
-        function ptc() {
-            if ("<%=save.printTC%>" == "1") {
-                document.getElementById("printTC").checked = true;
-            } else {
-                document.getElementById("printTC").checked = false;
-            }
+        rt();
+    }
+    function ptc() {
+        if ("<%=save.printTC%>" == "1") {
+            document.getElementById("printTC").checked = true;
+        } else {
+            document.getElementById("printTC").checked = false;
         }
-        function ps() {
-            if ("<%=save.printSize%>" == "1") {
-                document.getElementById("printSize").checked = true;
-            } else {
-                document.getElementById("printSize").checked = false;
-            }
+    }
+    function ps() {
+        if ("<%=save.printSize%>" == "1") {
+            document.getElementById("printSize").checked = true;
+        } else {
+            document.getElementById("printSize").checked = false;
         }
-        function rm() {
-            if ("<%=save.randomSize%>" == "1") {
-                document.getElementById("randomSize").checked = true;
-            } else {
-                document.getElementById("randomSize").checked = false;
-            }
+    }
+    function rm() {
+        if ("<%=save.randomSize%>" == "1") {
+            document.getElementById("randomSize").checked = true;
+        } else {
+            document.getElementById("randomSize").checked = false;
         }
-        function wt() {
-            if ("<%=save.isWeight%>" == "1") {
-                document.getElementById("isWeight").checked = true;
-                showWeightInput();
-            } else {
-                document.getElementById("isWeight").checked = false;
-            }
+    }
+    function wt() {
+        if ("<%=save.isWeight%>" == "1") {
+            document.getElementById("isWeight").checked = true;
+            showWeightInput();
+        } else {
+            document.getElementById("isWeight").checked = false;
         }
-        function rt() {
-            if ("<%=save.randomRoot%>" == "1") {
-                document.getElementById("randomRoot").checked = true;
-                showRootInput();
-            } else {
-                document.getElementById("randomRoot").checked = false;
-            }
+    }
+    function rt() {
+        if ("<%=save.randomRoot%>" == "1") {
+            document.getElementById("randomRoot").checked = true;
+            showRootInput();
+        } else {
+            document.getElementById("randomRoot").checked = false;
         }
-    </script>
-</body>
-<footer><%- include('partials/footer'); %></footer>
+    }
+</script>
+<%- include('partials/footer'); %>

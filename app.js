@@ -11,7 +11,7 @@ const grid = require("./scripts/grid");
 const str = require("./scripts/string");
 const tree = require("./scripts/tree");
 
-let sugg;
+let sugg, email;
 let ans = [];
 let save = [
     "tc",
@@ -173,7 +173,6 @@ app.post("/tree", function (req, res) {
     res.redirect("/tree");
 });
 
-
 function init() {
     JSON.stringify(save);
     JSON.stringify(s_arr);
@@ -195,12 +194,13 @@ app.get("/suggestion", function (req, res) {
 });
 app.post("/suggestion", function (req, res) {
     sugg = req.body.suggestion;
+    email = req.body.email;
     console.log(sugg);
     const mailOptions = {
-        from: "bandwidth999@gmail.com", // sender address
-        to: "random.tc.generator@gmail.com", // list of receivers
-        subject: "Suggestion on Random TestCase Generator", // Subject line
-        html: "<p>" + sugg + "</p>", // plain text body
+        from: "bandwidth999@gmail.com",
+        to: "random.tc.generator@gmail.com", 
+        subject: "Suggestion on Random TestCase Generator", 
+        html: "<p>From : " + email + "<br>" + "Suggestion : " + sugg + "</p>", 
     };
     transporter.sendMail(mailOptions, function (err, info) {
         if (err) {
@@ -209,7 +209,7 @@ app.post("/suggestion", function (req, res) {
             //console.log(info);
         }
     });
-    res.redirect("/suggestion");
+    res.redirect("/");
 });
 
 //Kalpit Arya
