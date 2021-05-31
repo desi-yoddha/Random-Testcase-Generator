@@ -1,0 +1,59 @@
+.mid-fl {
+    margin: auto;
+}
+.form-span-width {
+    width: 200px;
+}
+.ht-xl {
+    width: 100%;
+    height: 50px;
+}
+.text-color-r1 {
+    color: green;
+}
+.output-p {
+    background-color: whitesmoke;
+    width: auto;
+    height: 500px;
+    padding: 30px;
+    padding-left: 40px;
+    margin: 20px;
+    overflow-y: scroll;
+}
+.hide {
+    display: none;
+}
+.pd-lr {
+    padding-left: 10%;
+    padding-right: 10%;
+}
+.pd-lr-2 {
+    padding-left: 5%;
+    padding-right: 5%;
+}
+footer {
+    color: white;
+    color: rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+.front-block {
+    width: 30rem;
+    height: 10rem;
+    background-image: url(../bgf.png);
+}
+table {
+    width: 100%;
+}
+.container-c {
+    min-height: 64vh;
+}
+.hd {
+    font-family: 'Montserrat', sans-serif;
+}
+.hd-2{
+    font-family: 'Roboto Slab', serif;
+}
+.nav-link :hover{
+    background-color: rgba(0, 0, 0, 0.822);
+}

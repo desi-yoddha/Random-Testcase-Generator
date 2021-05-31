@@ -1,0 +1,324 @@
+<%- include('partials/header'); %>
+<body style="background-color: #bdcfb5">
+    <nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid pd-lr-2">
+        <a class="navbar-brand" href="/">Random TestCase Generator</a>
+        <div class="navbar-nav d-flex flex-row-reverse">
+            <a class="nav-link mx-5" href="/tree" >Tree</a>
+            <a class="nav-link mx-5 active" href="/string">String</a>
+            <a class="nav-link mx-5" href="/matrix">Matrix</a>
+            <a class="nav-link mx-5" href="/array">Array</a>
+        </div>
+    </div>
+    </nav>
+
+        <div class="container pd-lr">
+            <h1 class="display-1" style="margin-bottom: 50px">STRING</h1>
+            <div class="form-wrap">
+                <form class="align-items-center" method="post" action="/string">
+                    <div class="input-group mb-3">
+                        <span
+                            class="input-group-text form-span-width bg-dark"
+                            style="color: whitesmoke"
+                            id="inputGroup-sizing-default"
+                            >Test Cases</span
+                        >
+                        <input
+                            type="number"
+                            id="tc"
+                            name="testCase"
+                            class="form-control"
+                            aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-default"
+                            placeholder="Number of Test Cases"
+                            value="<%=save.tc%>"
+                            required
+                        />
+                    </div>
+                    <div class="form-check mb-3">
+                        <input
+                            class="form-check-input"
+                            type="checkbox"
+                            value="1"
+                            id="printTC"
+                            name="printTC"
+                        />
+                        <label class="form-check-label" for="printTC">
+                            <span class="checkbox-text-color"
+                                >Print TestCase</span
+                            >
+                        </label>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <span
+                            class="input-group-text form-span-width bg-dark"
+                            style="color: whitesmoke"
+                            id="inputGroup-sizing-default"
+                            >Size</span
+                        >
+                        <input
+                            type="number"
+                            id="n"
+                            name="size"
+                            class="form-control"
+                            aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-default"
+                            placeholder="Size of String"
+                            value="<%=save.nmax%>"
+                            required
+                        />
+                    </div>
+                    <div class="form-check mb-0">
+                        <input
+                            class="form-check-input"
+                            type="checkbox"
+                            value="1"
+                            id="printSize"
+                            name="printSize"
+                        />
+                        <label class="form-check-label" for="printSize">
+                            <span class="checkbox-text-color">Print Size</span>
+                        </label>
+                    </div>
+                    <div class="form-check mb-3">
+                        <input
+                            class="form-check-input"
+                            type="checkbox"
+                            value="1"
+                            id="randomSize"
+                            name="randomSize"
+                        />
+                        <label class="form-check-label" for="randomSize">
+                            <span class="checkbox-text-color"
+                                >Randomize Size</span
+                            >
+                        </label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <input
+                            class="form-check-input"
+                            type="radio"
+                            name="flexRadioDefault"
+                            id="random"
+                            value="1"
+                        />
+                        <label class="form-check-label" for="random">
+                            <span class="checkbox-text-color">Random</span>
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input
+                            class="form-check-input"
+                            type="radio"
+                            name="flexRadioDefault"
+                            value="2"
+                            id="ascending"
+                        />
+                        <label class="form-check-label" for="ascending">
+                            <span class="checkbox-text-color">Ascending</span>
+                        </label>
+                    </div>
+                    <div class="form-check mb-4 form-check-inline">
+                        <input
+                            class="form-check-input"
+                            type="radio"
+                            name="flexRadioDefault"
+                            value="3"
+                            id="descending"
+                        />
+                        <label class="form-check-label" for="descending">
+                            <span class="checkbox-text-color">Descending</span>
+                        </label>
+                    </div>
+
+                    <div class="form-check mb-0">
+                        <input
+                            class="form-check-input"
+                            type="checkbox"
+                            value="1"
+                            id="isPalindrome"
+                            name="isPalindrome"
+                        />
+                        <label class="form-check-label" for="isPalindrome">
+                            <span class="checkbox-text-color">Palindrome</span>
+                        </label>
+                    </div>
+
+                    <div class="form-check mb-3">
+                        <input
+                            class="form-check-input"
+                            type="checkbox"
+                            value="1"
+                            id="binary"
+                            name="binary"
+                            onclick="hideCharCheckbox('azSmall','azCapital','0-9')"
+                        />
+                        <label class="form-check-label" for="binary">
+                            <span class="checkbox-text-color"
+                                >Binary String</span
+                            >
+                        </label>
+                    </div>
+
+                    <div class="form-check form-check-inline" name="chars">
+                        <input
+                            class="form-check-input"
+                            type="checkbox"
+                            value="1"
+                            id="azSmall"
+                            name="azSmall"
+                            checked
+                        />
+                        <label class="form-check-label" for="a-z">
+                            <span class="checkbox-text-color">a-z</span>
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline" name="chars">
+                        <input
+                            class="form-check-input"
+                            type="checkbox"
+                            value="1"
+                            id="azCapital"
+                            name="azCapital"
+                        />
+                        <label class="form-check-label" for="A-Z">
+                            <span class="checkbox-text-color">A-Z</span>
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline" name="chars">
+                        <input
+                            class="form-check-input"
+                            type="checkbox"
+                            value="1"
+                            id="0-9"
+                            name="nums"
+                        />
+                        <label class="form-check-label" for="0-9">
+                            <span class="checkbox-text-color">0-9</span>
+                        </label>
+                    </div>
+
+                    <div class="text-center mb-5">
+                        <button
+                            type="submit"
+                            onclick="limitCheck('tc','n')"
+                            class="btn btn-dark"
+                        >
+                            Generate!
+                        </button>
+                    </div>
+                </form>
+
+                <div>
+                    <p contenteditable="true" class="output-p" id="pout">
+                        <% for(const sub of generatedTc) { %> <% let str="" %>
+                        <% for(const el of sub) { %> <% str=str+el+" "%> <% } %>
+                        <%=str%>
+                        <br />
+                        <% } %>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <script>
+            window.onload = function () {
+                init_val();
+            };
+            function init_val() {
+                ptc();
+                ps();
+                order();
+                rm();
+                bin();
+                hideCharCheckbox("azSmall", "azCapital", "0-9");
+                chars();
+                pal();
+            }
+            function ptc() {
+                if ("<%=save.printTC%>" == "1") {
+                    document.getElementById("printTC").checked = true;
+                } else {
+                    document.getElementById("printTC").checked = false;
+                }
+            }
+            function ps() {
+                if ("<%=save.printSize%>" == "1") {
+                    document.getElementById("printSize").checked = true;
+                } else {
+                    document.getElementById("printSize").checked = false;
+                }
+            }
+            function order() {
+                if ("<%=save.order%>" == "2") {
+                    document.getElementById("ascending").checked = true;
+                } else if ("<%=save.order%>" == "3") {
+                    document.getElementById("descending").checked = true;
+                } else {
+                    document.getElementById("random").checked = true;
+                }
+            }
+            function rm() {
+                if ("<%=save.randomSize%>" == "1") {
+                    document.getElementById("randomSize").checked = true;
+                } else {
+                    document.getElementById("randomSize").checked = false;
+                }
+            }
+            function bin() {
+                if ("<%=save.isBinary%>" == "1") {
+                    document.getElementById("binary").checked = true;
+                } else {
+                    document.getElementById("binary").checked = false;
+                }
+            }
+            function chars(params) {
+                if ("<%=save.isAzSmall%>" == "1") {
+                    document.getElementById("azSmall").checked = true;
+                } else {
+                    document.getElementById("azSmall").checked = false;
+                }
+
+                if ("<%=save.isAzCapital%>" == "1") {
+                    document.getElementById("azCapital").checked = true;
+                } else {
+                    document.getElementById("azCapital").checked = false;
+                }
+                if ("<%=save.isNumber%>" == "1") {
+                    document.getElementById("0-9").checked = true;
+                } else {
+                    document.getElementById("0-9").checked = false;
+                }
+            }
+            function pal() {
+                if ("<%=save.isPalindrome%>" == "1") {
+                    document.getElementById("isPalindrome").checked = true;
+                } else {
+                    document.getElementById("isPalindrome").checked = false;
+                }
+            }
+            function limitCheck(e1, e2) {
+                var a = document.getElementById(e1).value;
+                var b = document.getElementById(e2).value;
+                if (a * b > 100000) {
+                    window.alert(
+                        "(Number of Testcase) x (Size of String) must be less than or equall to 100000! "
+                    );
+                }
+            }
+            function hideCharCheckbox(e1, e2, e3) {
+                if (document.getElementById("binary").checked == true) {
+                    document.getElementById(e1).disabled = true;
+                    document.getElementById(e2).disabled = true;
+                    document.getElementById(e3).disabled = true;
+                } else {
+                    document.getElementById(e1).disabled = false;
+                    document.getElementById(e2).disabled = false;
+                    document.getElementById(e3).disabled = false;
+                }
+            }
+        </script>
+    </body>
+    <footer><%- include('partials/footer'); %></footer>
+</html>
