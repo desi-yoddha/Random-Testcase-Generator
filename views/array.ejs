@@ -1,6 +1,6 @@
 <%- include('partials/header'); %> <%- include('partials/navbar'); %>
 
-<div class="container pd-lr">
+<div class="container pd-lr conatiner-c">
     <h1 class="display-1" style="margin-bottom: 50px">ARRAY</h1>
     <div class="form-wrap">
         <form class="align-items-center" method="post" action="/array">
@@ -215,18 +215,15 @@
 
         <div>
             <p contenteditable="true" class="output-p" id="pout">
-                <% for(const sub of generatedTc) { %> 
-                    <% let str="" %> 
-                    <% for(const el of sub) { %> 
-                        <% str=str+el+" "%> 
-                    <% } %> 
-                    <%=str%>
+                <% for(const sub of generatedTc) { %> <% let str="" %> <%
+                for(const el of sub) { %> <% str=str+el+" "%> <% } %> <%=str%>
                 <br />
                 <% } %>
             </p>
         </div>
     </div>
 </div>
+<div class="ht-xl"></div>
 <script>
     window.onload = function () {
         init_val();

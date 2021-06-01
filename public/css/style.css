@@ -1,4 +1,4 @@
-.bg-dark2{
+.bg-dark2 {
     background-color: #070707f5;
 }
 .nav-margin {
@@ -44,7 +44,6 @@
     padding-right: 5%;
 }
 
-
 @media only screen and (max-width: 800px) {
     .pd-lr {
         padding-left: 3%;
@@ -53,6 +52,9 @@
     .pd-lr-2 {
         padding-left: 1%;
         padding-right: 1%;
+    }
+    .form-span-width {
+        width: 120px;
     }
 }
 
@@ -74,6 +76,14 @@ table {
     min-height: 60vh;
     min-height: calc(var(--vh, 1vh) * 60);
 }
+
+@media only screen and (min-height: 1250px) {
+    .container-c {
+        min-height: 70vh;
+        min-height: calc(var(--vh, 1vh) * 70);
+    }
+}
+
 .hd {
     font-family: "Montserrat", sans-serif;
 }
@@ -83,6 +93,7 @@ table {
 
 .footer-20192 {
     position: relative;
+    bottom: 0;
     color: #fff;
     padding: 1rem 0;
     background-color: #070707f5;
